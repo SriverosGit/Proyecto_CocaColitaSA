@@ -18,12 +18,15 @@ async function showUsers() {
         const response = await fetch(USERS_API);
         usersData = await response.json();
         
-        // Dev2: Adding AGE field to user data (intentional conflict area)
+        // Dev2: Adding AGE field to user data (MAJOR CONFLICT ZONE)
         const usersWithAge = usersData.map(user => {
             return {
                 ...user,
                 age: Math.floor(Math.random() * (65 - 18) + 18), // Random age between 18-65
-                website: user.website || 'No website'
+                website: user.website || 'No website',
+                // DEV2: Email placeholder - CONFLICT with Dev1's real email implementation
+                email: 'age-dev@example.com', // This will conflict with Dev1's email logic
+                contactMethod: 'phone' // Dev2 prefers phone over email
             };
         });
         
@@ -35,7 +38,7 @@ async function showUsers() {
     }
 }
 
-// RF3: Display users with AGE (Dev2 version - will conflict with Dev1's email implementation)
+// RF3: Display users with AGE (Dev2 version - INTENTIONAL CONFLICT ZONE with Dev1)
 function displayUsers(users) {
     const container = document.getElementById('usersData');
     
@@ -44,22 +47,35 @@ function displayUsers(users) {
         return;
     }
     
-    // Dev2: HTML template focusing on AGE field (conflict zone)
+    // DEV2 CONFLICT ZONE: Age-focused template (will conflict with Dev1's email implementation)
     const usersHTML = users.map(user => `
         <div class="user-card">
             <h3>${user.name}</h3>
             <div class="user-info">
                 <span><strong>Usuario:</strong> ${user.username}</span>
-                <span><strong>Edad:</strong> ${user.age} años</span>
-                <span><strong>Teléfono:</strong> ${user.phone}</span>
-                <span><strong>Sitio web:</strong> ${user.website}</span>
-                <span><strong>Ciudad:</strong> ${user.address.city}</span>
-                <span><strong>Empresa:</strong> ${user.company.name}</span>
+                <!-- DEV2: Age field implementation - CONFLICT EXPECTED -->
+                <span><strong>🎂 Edad:</strong> ${user.age} años</span>
+                <span><strong>📧 Contacto:</strong> Sin email configurado</span>
+                <span><strong>📞 Teléfono:</strong> ${user.phone}</span>
+                <span><strong>🌐 Sitio web:</strong> ${user.website}</span>
+                <span><strong>🏙️ Ciudad:</strong> ${user.address.city}</span>
+                <span><strong>🏢 Empresa:</strong> ${user.company.name}</span>
+                <!-- DEV2: Age category classification -->
+                <span><strong>👤 Categoría:</strong> ${getAgeCategory(user.age)}</span>
             </div>
         </div>
     `).join('');
     
     container.innerHTML = usersHTML;
+}
+
+// DEV2: Age category function (additional conflict potential)
+function getAgeCategory(age) {
+    if (age >= 18 && age <= 25) return "Joven Profesional";
+    if (age >= 26 && age <= 35) return "Adulto Joven";
+    if (age >= 36 && age <= 50) return "Adulto Experimentado";
+    if (age >= 51 && age <= 65) return "Adulto Senior";
+    return "Edad no clasificada";
 }
 
 // RF4: Show products functionality
@@ -122,6 +138,23 @@ function getAverageAge() {
     if (usersData.length === 0) return 0;
     const totalAge = usersData.reduce((sum, user) => sum + (user.age || 0), 0);
     return Math.round(totalAge / usersData.length);
+}
+
+// DEV2: Email validation function (CONFLICT: Dev1 will implement real email logic here)
+function validateUserEmail(email) {
+    // Dev2's simple validation focused on age-related domains
+    const ageBasedDomains = ['young.com', 'adult.com', 'senior.com'];
+    return email.includes('@') && email.includes('age');
+}
+
+// DEV2: Contact preference based on age (CONFLICT ZONE)
+function getPreferredContact(user) {
+    // Dev2 logic: older users prefer phone, younger prefer email
+    if (user.age > 40) {
+        return `📞 ${user.phone} (Preferido por edad)`;
+    } else {
+        return `📧 ${user.email} (Joven - email preferido)`;
+    }
 }
 
 // Initialize application
