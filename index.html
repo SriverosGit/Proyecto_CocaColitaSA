@@ -8,5 +8,42 @@
 <body>
     <button onclick="window.location.href='users.html'">Ir a Usuarios</button>
 
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechSolutions Web - CocaColita S.A.</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>TechSolutions Web</h1>
+        <p>Gestión de datos y visualización - CocaColita S.A.</p>
+    </header>
+
+    <main>
+        <section class="controls">
+            <button id="loadUsers" onclick="showUsers()">Cargar Usuarios</button>
+            <button id="loadProducts" onclick="showProducts()">Cargar Productos</button>
+        </section>
+
+        <section class="data-display">
+            <div id="userList" class="data-container">
+                <h2>Lista de Usuarios</h2>
+                <div id="usersData"></div>
+            </div>
+            
+            <div id="productList" class="data-container">
+                <h2>Lista de Productos</h2>
+                <div id="productsData"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 CocaColita S.A. - Soluciones Tecnológicas</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
