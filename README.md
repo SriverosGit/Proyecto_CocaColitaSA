@@ -7,9 +7,10 @@
 
 ## 👥 Equipo de Desarrollo
 
-- **Dev1:** [Nombre] - RF2: Email functionality
-- **Dev2:** [Tu nombre] - RF3: Age functionality ✅ 
+- **Dev1:** [Sebastian Riveros] - RF2: Email functionality
+- **Dev2:** [Victor Garces] - RF3: Age functionality ✅ 
 - **Dev3:** Jim Maldonado - RF1 + RF4: Mostrar lista y corrección
+dev 4 Isaias Collao
 
 ## 📋 Requerimientos Funcionales (RFs)
 
