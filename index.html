@@ -36,14 +36,13 @@
     </footer>
 
     <script src="script.js"></script>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <button onclick="window.location.href='users.html'">Ir a Usuarios</button>
 
+    <!-- Modal para usuario -->
+    <div id="userModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); align-items:center; justify-content:center;">
+      <div style="background:#fff; padding:2em; border-radius:8px; min-width:300px;">
+        <div id="userModalContent"></div>
+        <button onclick="closeModal()">Cerrar</button>
+      </div>
+    </div>
 </body>
 </html>
